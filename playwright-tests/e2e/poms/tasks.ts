@@ -60,4 +60,22 @@ export class TaskPage {
       this.page.getByTestId("tasks-pending-table").getByRole("row").nth(1)
     ).toContainText(taskName);
   };
+
+  createCommentAndVerify = async({taskName, comment}) => {
+    await this.page
+    .getByTestId("tasks-pending-table")
+    .getByRole("row", {
+      name: new RegExp(taskName, "i"),
+    }).getByText(taskName).click();
+
+    await expect(this.page.getByRole("heading", {name: taskName})).toBeVisible();
+    await this.page.getByTestId("comments-text-field").fill(comment);
+    await this.page.getByTestId("comments-submit-button").click();
+    await expect(this.page.getByTestId('task-comment-content')).toHaveText(comment);
+
+    await this.page.getByTestId('navbar-todos-page-link').click();
+    await expect(this.page.getByTestId("tasks-pending-table")
+      .getByRole('row', { name: taskName })
+      .getByRole('cell').nth(3)).toHaveText("1");
+  }
 }
