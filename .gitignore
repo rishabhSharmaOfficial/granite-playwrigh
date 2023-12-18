@@ -121,3 +121,12 @@ cypress-tests/cypress/videos/
 
 # Ignore redis dump file
 dump.rdb
+
+# .gitignore
+
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/auth

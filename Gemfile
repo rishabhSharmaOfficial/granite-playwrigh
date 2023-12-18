@@ -67,7 +67,7 @@ group :development do
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   # For linting ERB files
-  gem "erb_lint", require: false, git: "https://github.com/Shopify/erb-lint.git", branch: "main"
+  # gem "erb_lint", require: false, git: "https://github.com/Shopify/erb-lint.git", branch: "main"
 end
 
 group :test do
